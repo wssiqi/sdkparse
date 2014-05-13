@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.android.com/sdk/android/addon/5"
+	xmlns:sdk="http://schemas.android.com/sdk/android/addon/5"
+	elementFormDefault="qualified">
+	<complexType name="sdk-addon">
+		<sequence>
+			<element name="license" minOccurs="0" maxOccurs="unbounded"
+				type="sdk:license"></element>
+			<element name="add-on" minOccurs="0" maxOccurs="unbounded"
+				type="sdk:add-on"></element>
+			<element name="extra" minOccurs="0" maxOccurs="unbounded"
+				type="sdk:add-on"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="license">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="id" type="string" />
+				<attribute name="type" type="string" />
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="add-on">
+		<sequence>
+			<element name="vendor-id" type="string"></element>
+			<element name="vendor-display" type="string"></element>
+			<element name="name-id" type="string"></element>
+			<element name="name-display" type="string"></element>
+			<element name="path" type="string"></element>
+			<element name="api-level" type="string"></element>
+			<element name="revision" type="string"></element>
+			<element name="description" type="string"></element>
+			<element name="desc-url" type="string"></element>
+			<element name="uses-license" type="sdk:uses-license"></element>
+			<element name="archives" type="sdk:archives"></element>
+			<element name="libs" type="sdk:libs"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="uses-license">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="ref" type="string" />
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="archives">
+		<sequence>
+			<element name="archive" type="sdk:archive" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="archive">
+		<sequence>
+			<element name="size" type="long"></element>
+			<element name="checksum" type="sdk:checksum"></element>
+			<element name="url" type="string"></element>
+		</sequence>
+		<attribute name="os" type="string"></attribute>
+	</complexType>
+
+	<complexType name="checksum">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="type" type="string"></attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="libs">
+		<sequence>
+			<element name="lib" type="sdk:lib" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="lib">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="description" type="string"></element>
+		</sequence>
+	</complexType>
+
+</schema>
